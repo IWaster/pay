@@ -21,6 +21,8 @@ public class ValidatorException extends BaseException {
         super(errCode, errMessage, errDetails);
     }
 
+
+
     @Override
     public String getErrCode() {
         return errCode;

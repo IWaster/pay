@@ -1,7 +1,10 @@
 package io.ouka.pay.util;
 
+import io.ouka.pay.exception.validator.ValidatorException;
+
 import javax.validation.ConstraintViolation;
 import javax.validation.Validation;
+import javax.validation.ValidationException;
 import javax.validation.Validator;
 import javax.validation.groups.Default;
 import java.util.ArrayList;
@@ -16,7 +19,7 @@ import java.util.Set;
 public final class ParamValidatorUtils {
 
     private ParamValidatorUtils(){}
-    public static final Validator validator = Validation.buildDefaultValidatorFactory().getValidator();
+    private static final Validator validator = Validation.buildDefaultValidatorFactory().getValidator();
 
 
     /**
@@ -42,7 +45,7 @@ public final class ParamValidatorUtils {
         List<String> validate = validate(t);
         if (validate.size()>0) {
             /*这块抛异常*/
-            throw new RuntimeException();
+            throw new ValidatorException("70000","参数错误",validate);
         }
     }
 
