@@ -27,4 +27,12 @@ public abstract class AbstractResponse implements Serializable {
     public void setMsg(String msg) {
         this.msg = msg;
     }
+
+    @Override
+    public String toString() {
+        return "AbstractResponse{" +
+                "code='" + code + '\'' +
+                ", msg='" + msg + '\'' +
+                '}';
+    }
 }
