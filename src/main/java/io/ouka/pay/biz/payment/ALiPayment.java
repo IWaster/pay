@@ -3,12 +3,20 @@ package io.ouka.pay.biz.payment;
 import io.ouka.pay.biz.abs.BasePayment;
 import io.ouka.pay.biz.abs.Context;
 import io.ouka.pay.biz.abs.Validator;
+import io.ouka.pay.biz.entity.PayResultEnum;
+import io.ouka.pay.biz.entity.Payment;
+import io.ouka.pay.biz.enums.PayTypeEnum;
+import io.ouka.pay.biz.payment.channel.alipay.AliPayBuildRequest;
 import io.ouka.pay.common.constants.ALiPaymentConfig;
 import io.ouka.pay.common.result.AbstractRequest;
 import io.ouka.pay.common.result.AbstractResponse;
 import io.ouka.pay.common.result.PaymentRequest;
+import io.ouka.pay.common.result.PaymentResponse;
 import io.ouka.pay.context.ALiPaymentContext;
 
+import java.math.BigDecimal;
+import java.util.Date;
+import java.util.Map;
 import java.util.SortedMap;
 
 /**
@@ -22,7 +30,7 @@ public class ALiPayment extends BasePayment {
 
     @Override
     public String getPayChannel() {
-        return null;
+        return PayTypeEnum.ALI_PAY.getCode();
     }
 
     @Override
@@ -60,18 +68,40 @@ public class ALiPayment extends BasePayment {
     }
     @Override
     public AbstractResponse generalProcess(AbstractRequest request, Context context) {
-        return null;
+        Map<String, Object> sPara = AliPayBuildRequest.buildRequestParam(context.getsParaTemp(), aliPaymentConfig);
+        String strPara = AliPayBuildRequest.buildRequest(sPara, "get", "确认", aliPaymentConfig);
+        PaymentResponse response = new PaymentResponse();
+        response.setCode("成功code");
+        response.setMsg("成功message");
+        response.setHtmlStr(strPara);
+        return response;
     }
 
     @Override
     public void afterProcess(AbstractRequest request, AbstractResponse respond, Context context) {
-
+        PaymentRequest paymentRequest = (PaymentRequest) request;
+        Payment payment = new Payment();
+        payment.setCreateTime(new Date());
+        //订单号
+        payment.setOrderId(paymentRequest.getTradeNo());
+        payment.setCreateTime(new Date());
+        BigDecimal amount =paymentRequest.getOrderFee();
+        payment.setOrderAmount(amount);
+        payment.setPayerAmount(amount);
+        payment.setPayerUid(paymentRequest.getUserId());
+        payment.setPayerName("");
+        payment.setPayWay(paymentRequest.getPayChannel());
+        payment.setProductName(paymentRequest.getSubject());
+        payment.setStatus(PayResultEnum.TRADE_PROCESSING.getCode());
+        payment.setRemark("支付宝支付");
+        payment.setUpdateTime(new Date());
+        /*落库*/
     }
 
     @Override
     public <T extends AbstractResponse> T completePayment(AbstractRequest request) {
         /**
-         * 获取参数  检验  落库 返回
+         * 回调 获取参数  检验  落库 返回
          */
         return null;
     }
