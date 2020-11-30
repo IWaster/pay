@@ -11,10 +11,7 @@ import java.util.concurrent.ConcurrentHashMap;
 
 /**
  * @author ouka
- * @ClassName BasePayment
- * @Package io.ouka.pay.biz.abs
- * @Description: TODO
- * @date 2020/11/25 13:39
+ * BasePayment
  */
 public abstract class BasePayment implements IPayment {
     public static Map<String, BasePayment> paymentMap = new ConcurrentHashMap<String, BasePayment>();

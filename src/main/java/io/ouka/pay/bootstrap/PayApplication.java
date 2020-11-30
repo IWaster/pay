@@ -5,10 +5,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 /**
  * @author ouka
- * @ClassName PayApplication
- * @Package io.ouka.pay.bootstrap
- * @Description: TODO
- * @date 2020/11/25 10:49
+ * PayApplication
  */
 @SpringBootApplication
 public class PayApplication {

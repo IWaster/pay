@@ -4,10 +4,7 @@ import java.io.Serializable;
 
 /**
  * @author ouka
- * @ClassName AbstractRequest
- * @Package io.ouka.pay.common.result
- * @Description: TODO
- * @date 2020/11/25 10:56
+ * AbstractRequest
  */
 public abstract class AbstractRequest implements Serializable {
 

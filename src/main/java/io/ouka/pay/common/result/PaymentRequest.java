@@ -8,10 +8,7 @@ import java.math.BigDecimal;
 
 /**
  * @author ouka
- * @ClassName PaymentRequest
- * @Package io.ouka.pay.common.result
- * @Description: TODO
- * @date 2020/11/25 16:08
+ * PaymentRequest
  */
 public class PaymentRequest extends AbstractRequest{
     private static final long serialVersionUID = 574464508295403067L;

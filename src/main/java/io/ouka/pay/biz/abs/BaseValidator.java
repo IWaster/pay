@@ -5,10 +5,7 @@ import io.ouka.pay.util.ParamValidatorUtils;
 
 /**
  * @author ouka
- * @ClassName BaseValidator
- * @Package io.ouka.pay.biz.abs
- * @Description: TODO
- * @date 2020/11/25 14:23
+ * BaseValidator
  */
 public abstract class BaseValidator implements Validator{
 

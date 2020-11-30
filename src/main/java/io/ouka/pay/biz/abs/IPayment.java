@@ -5,10 +5,7 @@ import io.ouka.pay.common.result.AbstractResponse;
 
 /**
  * @author ouka
- * @ClassName IPayment
- * @Package io.ouka.pay.biz.abs
- * @Description: TODO
- * @date 2020/11/25 10:54
+ * IPayment
  */
 public interface IPayment {
     /**
@@ -19,5 +16,11 @@ public interface IPayment {
      */
     <T extends AbstractResponse> T  process(AbstractRequest request);
 
+    /**
+     * 完成支付
+     * @param request request
+     * @param <T> t
+     * @return t
+     */
     <T extends AbstractResponse> T completePayment(AbstractRequest request);
 }

@@ -1,7 +1,5 @@
 package io.ouka.pay.util;
 
-import io.ouka.pay.common.result.PaymentNotifyRequest;
-
 import javax.validation.ConstraintViolation;
 import javax.validation.Validation;
 import javax.validation.Validator;
@@ -13,10 +11,7 @@ import java.util.Set;
 
 /**
  * @author ouka
- * @ClassName ParamValidatorUtils
- * @Package io.ouka.pay.util
- * @Description: TODO
- * @date 2020/11/25 14:24
+ * ParamValidatorUtils
  */
 public final class ParamValidatorUtils {
 

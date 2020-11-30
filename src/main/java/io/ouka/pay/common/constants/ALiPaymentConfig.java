@@ -5,10 +5,7 @@ import org.springframework.stereotype.Component;
 
 /**
  * @author ouka
- * @ClassName ALiPaymentConfig
- * @Package io.ouka.pay.common.constants
- * @Description: TODO
- * @date 2020/11/25 15:42
+ * ALiPaymentConfig
  */
 @Component
 public class ALiPaymentConfig {

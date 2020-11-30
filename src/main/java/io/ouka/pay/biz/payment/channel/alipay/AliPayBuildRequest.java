@@ -8,10 +8,7 @@ import java.util.Map;
 
 /**
  * @author ouka
- * @ClassName AlipayBuildRequest
- * @Package io.ouka.pay.biz.payment.channel.alipay
- * @Description: TODO
- * @date 2020/11/25 15:40
+ * AliPayBuildRequest
  */
 public class AliPayBuildRequest {
     /**

@@ -9,17 +9,11 @@ import io.ouka.pay.common.result.AbstractResponse;
 import io.ouka.pay.common.result.PaymentRequest;
 import io.ouka.pay.context.ALiPaymentContext;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Set;
 import java.util.SortedMap;
 
 /**
  * @author ouka
- * @ClassName ALiPayment
- * @Package io.ouka.pay.biz.payment
- * @Description: TODO
- * @date 2020/11/25 16:04
+ * ALiPayment
  */
 public class ALiPayment extends BasePayment {
 
@@ -49,7 +43,7 @@ public class ALiPayment extends BasePayment {
     @Override
     public void prepare(AbstractRequest request, Context context)  {
         super.prepare(request, context);
-        SortedMap sParaTemp = context.getsParaTemp();
+        SortedMap<String, Object> sParaTemp = context.getsParaTemp();
         ALiPaymentContext aliPaymentContext = (ALiPaymentContext) context;
         sParaTemp.put("partner", aliPaymentConfig.getAli_partner());
         sParaTemp.put("service", aliPaymentConfig.getAli_service());
@@ -76,38 +70,11 @@ public class ALiPayment extends BasePayment {
 
     @Override
     public <T extends AbstractResponse> T completePayment(AbstractRequest request) {
+        /**
+         * 获取参数  检验  落库 返回
+         */
         return null;
     }
 
 
-    public static void main(String[] args) {
-        Map<String,String> sPara = new HashMap<>();
-        sPara.put("1","2");
-        sPara.put("1","2");
-        sPara.put("1","2");
-        sPara.put("1","2");
-        sPara.put("1","2");
-        sPara.put("1","2");
-        StringBuffer sbHtml = new StringBuffer();
-        Set<String> keys = sPara.keySet();
-
-
-        sbHtml.append("<meta http-equiv='content-type' content='text/html; charset=utf-8'>");
-        sbHtml.append("<form id=\"alipaysubmit\" name=\"alipaysubmit\" accept-charset=\"utf-8\" action=\"" + "https://www.baidu.com"
-                + "_input_charset=" + "utf-8" + "\" method=\"" + "post"
-                + "\">");
-
-        for (int i = 0; i < keys.size(); i++) {
-            String name = "1";
-            String value = (String) sPara.get(name);
-
-            sbHtml.append("<input type=\"hidden\" name=\"" + name + "\" value=\"" + value + "\"/>");
-        }
-
-        //submit按钮控件请不要含有name属性
-        sbHtml.append("<input type=\"submit\" value=\"" + "strButtonName" + "\" style=\"display:none;\"></form>");
-        sbHtml.append("<script>document.forms['alipaysubmit'].submit();</script>");
-
-        sbHtml.toString();
-    }
 }

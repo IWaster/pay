@@ -1,23 +1,49 @@
 package io.ouka.pay.common.result;
 
-import javax.validation.constraints.Max;
-import javax.validation.constraints.Min;
-import javax.validation.constraints.NotBlank;
+import java.util.Map;
 
 /**
  * @author ouka
- * @ClassName PaymentNotifyRequest
- * @Package io.ouka.pay.common.result
- * @Description: TODO
- * @date 2020/11/25 11:25
+ * PaymentNotifyRequest
  */
 public class PaymentNotifyRequest extends AbstractRequest{
     private static final long serialVersionUID = 4800404140904865450L;
-    @NotBlank(message = "a参数为空")
-    public String a;
-    @Min(value = 0,message = "b过小")
-    @Max(value = 10,message = "b过大")
-    public int b;
+    /**
+     * 支付渠道（alipay：支付宝  /  wechat_pay：微信）
+     */
+    private String payChannel;
+    /**
+     * 服务端返回的支付通知结果
+     */
+    private Map<String,String[]> resultMap;
+    /**
+     * 微信返回的结果
+     */
+    private String xml;
+
+    public String getPayChannel() {
+        return payChannel;
+    }
+
+    public void setPayChannel(String payChannel) {
+        this.payChannel = payChannel;
+    }
+
+    public Map<String, String[]> getResultMap() {
+        return resultMap;
+    }
+
+    public void setResultMap(Map<String, String[]> resultMap) {
+        this.resultMap = resultMap;
+    }
+
+    public String getXml() {
+        return xml;
+    }
+
+    public void setXml(String xml) {
+        this.xml = xml;
+    }
 
     @Override
     public void requestCheck() {

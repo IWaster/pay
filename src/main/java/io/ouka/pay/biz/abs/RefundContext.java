@@ -2,10 +2,7 @@ package io.ouka.pay.biz.abs;
 
 /**
  * @author ouka
- * @ClassName RefundContext
- * @Package io.ouka.pay.biz.abs
- * @Description: TODO
- * @date 2020/11/25 15:38
+ * RefundContext
  */
 public class RefundContext extends Context{
     /** 商城退款流水号*/

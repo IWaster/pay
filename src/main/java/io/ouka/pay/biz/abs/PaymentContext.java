@@ -4,10 +4,7 @@ import java.math.BigDecimal;
 
 /**
  * @author ouka
- * @ClassName PaymentContext
- * @Package io.ouka.pay.biz.abs
- * @Description: TODO
- * @date 2020/11/25 15:38
+ * PaymentContext
  */
 public class PaymentContext extends Context{
     /** 商户订单号（必填）*/

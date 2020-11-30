@@ -8,10 +8,7 @@ import java.security.SignatureException;
 
 /**
  * @author ouka
- * @ClassName MD5
- * @Package io.ouka.pay.biz.payment.channel.alipay
- * @Description: TODO
- * @date 2020/11/25 15:34
+ * MD5
  */
 public class MD5 {
 

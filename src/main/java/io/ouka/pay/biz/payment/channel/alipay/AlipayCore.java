@@ -4,10 +4,7 @@ import java.util.*;
 
 /**
  * @author ouka
- * @ClassName AlipayCore
- * @Package io.ouka.pay.biz.payment.channel.alipay
- * @Description: TODO
- * @date 2020/11/25 15:45
+ * AlipayCore
  */
 public class AlipayCore {
 
@@ -26,8 +23,8 @@ public class AlipayCore {
 
         for (String key : sArray.keySet()) {
             String value = sArray.get(key).toString();
-            if (value == null || value.equals("") || key.equalsIgnoreCase("sign")
-                    || key.equalsIgnoreCase("sign_type")) {
+            if (value == null || "".equals(value) || "sign".equalsIgnoreCase(key)
+                    || "sign_type".equalsIgnoreCase(key)) {
                 continue;
             }
             result.put(key, value);
@@ -69,7 +66,6 @@ public class AlipayCore {
     public static String createAlipayMobileLinkString(Map<String, Object> params) {
 
         List<String> keys = new ArrayList<String>(params.keySet());
-        // Collections.sort(keys);
 
         StringBuffer prestr = new StringBuffer();
 
