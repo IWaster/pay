@@ -20,7 +20,12 @@ public class PayCoreService {
      */
     public PaymentResponse execPay(PaymentRequest request){
         PaymentResponse paymentResponse = new PaymentResponse();
-        paymentResponse = BasePayment.paymentMap.get(request.getPayChannel()).process(request);
+        try {
+            paymentResponse = BasePayment.paymentMap.get(request.getPayChannel()).process(request);
+        } catch (Exception e) {
+            e.printStackTrace();
+            ExceptionProcessorUtils.wrapperHandlerException(paymentResponse,e);
+        }
 
         return paymentResponse;
     }
@@ -33,8 +38,13 @@ public class PayCoreService {
      */
     public PaymentNotifyResponse paymentResultNotify(PaymentNotifyRequest request){
         PaymentNotifyResponse response=new PaymentNotifyResponse();
-        response=BasePayment.paymentMap.get
-                (request.getPayChannel()).completePayment(request);
+        try {
+            response=BasePayment.paymentMap.get
+                    (request.getPayChannel()).completePayment(request);
+        } catch (Exception e) {
+            e.printStackTrace();
+            ExceptionProcessorUtils.wrapperHandlerException(response,e);
+        }
 
         return response;
     }

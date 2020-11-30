@@ -18,6 +18,10 @@ public class ExceptionProcessorUtils {
 
     public static class ExceptionUtil{
         public static AbstractResponse handlerException4biz(AbstractResponse response,Exception e) throws Exception {
+/*            if (e instanceof xxxxxException){
+                response.setCode("xxxxException Code");
+                response.setMsg("xxxxException Msg");
+            }*/
             return response;
         }
     }
