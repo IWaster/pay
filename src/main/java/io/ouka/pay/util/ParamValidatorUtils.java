@@ -4,7 +4,6 @@ import io.ouka.pay.exception.validator.ValidatorException;
 
 import javax.validation.ConstraintViolation;
 import javax.validation.Validation;
-import javax.validation.ValidationException;
 import javax.validation.Validator;
 import javax.validation.groups.Default;
 import java.util.ArrayList;

@@ -1,21 +1,14 @@
 package io.ouka.pay.common.utils;
 
 import io.ouka.pay.common.result.AbstractResponse;
-import io.ouka.pay.common.result.PaymentRequest;
-import io.ouka.pay.common.result.PaymentResponse;
 import io.ouka.pay.exception.BaseException;
-import io.ouka.pay.exception.validator.ValidatorException;
-import io.ouka.pay.util.ParamValidatorUtils;
-
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * @author ouka
  * ExceptionProcessorUtils
  */
 public class ExceptionProcessorUtils {
-    public static AbstractResponse wrapperHandlerException(AbstractResponse response, Exception e){
+    public static void wrapperHandlerException(AbstractResponse response, Exception e){
         try {
             ExceptionUtil.handlerException4biz(response,e);
         } catch (Exception ex) {
@@ -24,7 +17,6 @@ public class ExceptionProcessorUtils {
             response.setMsg("错误");
         }
 
-        return response;
     }
 
     public static class ExceptionUtil{

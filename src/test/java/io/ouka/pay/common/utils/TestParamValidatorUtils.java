@@ -27,7 +27,7 @@ public class TestParamValidatorUtils {
 
     @Test
     public void testEx(){
-        System.out.println(ExceptionProcessorUtils.wrapperHandlerException(paymentResponse_1, validatorException_1));
+        ExceptionProcessorUtils.wrapperHandlerException(paymentResponse_1, validatorException_1);
 
         try {
             ParamValidatorUtils.validateParam(paymentRequest);
@@ -35,8 +35,10 @@ public class TestParamValidatorUtils {
             e.printStackTrace();
             System.out.println(e.getMessage());
             System.out.println(e.getCause());
-            System.out.println(ExceptionProcessorUtils.wrapperHandlerException(paymentResponse_2, e));
+            ExceptionProcessorUtils.wrapperHandlerException(paymentResponse_2, e);
         }
 
+        System.err.println(paymentResponse_1);
+        System.err.println(paymentResponse_2);
     }
 }
