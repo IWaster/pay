@@ -5,6 +5,9 @@ import io.ouka.pay.common.result.PaymentResponse;
 import io.ouka.pay.exception.BaseException;
 import io.ouka.pay.exception.validator.ValidatorException;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * @author ouka
  * ExceptionProcessorUtils
@@ -39,5 +42,11 @@ public class ExceptionProcessorUtils {
         ValidatorException test = new ValidatorException("7000","参数校验错误");
         PaymentResponse paymentResponse = new PaymentResponse();
         System.out.println(ExceptionProcessorUtils.wrapperHandlerException(paymentResponse, test));
+        List<String> list = new ArrayList<>();
+        list.add("参数a缺失");
+        list.add("参数b不合规");
+        ValidatorException exception = new ValidatorException("7000","参数校验错误",list);
+        PaymentResponse response = new PaymentResponse();
+        System.out.println(ExceptionProcessorUtils.wrapperHandlerException(response, exception));
     }
 }
