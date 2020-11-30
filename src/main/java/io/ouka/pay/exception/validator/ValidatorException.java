@@ -12,14 +12,13 @@ import java.util.List;
  * ValidatorException
  */
 public class ValidatorException extends BaseException {
-    private List<String> validatorErrMessage;
+
     public ValidatorException(String errCode, String errMessage) {
         super(errCode, errMessage);
     }
 
-    public ValidatorException(String errCode, String errMessage, List<String> validatorErrMessage) {
-        super(errCode, errMessage);
-        this.validatorErrMessage = validatorErrMessage;
+    public ValidatorException(String errCode, String errMessage, Object errDetails) {
+        super(errCode, errMessage, errDetails);
     }
 
     @Override
@@ -29,10 +28,11 @@ public class ValidatorException extends BaseException {
 
     @Override
     public String getErrMessage() {
-        if (CollectionUtils.isEmpty(validatorErrMessage)) {
-            return errMessage;
-        }else {
-            return JSONObject.toJSONString(validatorErrMessage);
-        }
+        return errMessage;
+    }
+
+    @Override
+    public Object getDetails() {
+        return errDetails;
     }
 }

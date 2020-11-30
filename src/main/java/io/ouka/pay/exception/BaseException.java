@@ -7,11 +7,18 @@ package io.ouka.pay.exception;
 public abstract class BaseException extends RuntimeException implements IExceptionMessage{
     protected String errCode;
     protected String errMessage;
+    protected Object errDetails;
 
     public BaseException(String errCode, String errMessage) {
         super();
         this.errCode = errCode;
         this.errMessage = errMessage;
+    }
+
+    public BaseException(String errCode, String errMessage, Object errDetails) {
+        this.errCode = errCode;
+        this.errMessage = errMessage;
+        this.errDetails = errDetails;
     }
 
     public BaseException() {

@@ -11,6 +11,7 @@ public abstract class AbstractResponse implements Serializable {
 
     private String code;
     private String msg;
+    private Object details;
 
     public String getCode() {
         return code;
@@ -28,11 +29,20 @@ public abstract class AbstractResponse implements Serializable {
         this.msg = msg;
     }
 
+    public Object getDetails() {
+        return details;
+    }
+
+    public void setDetails(Object details) {
+        this.details = details;
+    }
+
     @Override
     public String toString() {
         return "AbstractResponse{" +
                 "code='" + code + '\'' +
                 ", msg='" + msg + '\'' +
+                ", details=" + details +
                 '}';
     }
 }

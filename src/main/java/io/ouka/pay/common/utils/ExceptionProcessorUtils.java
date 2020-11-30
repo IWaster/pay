@@ -30,6 +30,7 @@ public class ExceptionProcessorUtils {
             if (e instanceof BaseException){
                 response.setCode(((BaseException) e).getErrCode());
                 response.setMsg(((BaseException) e).getErrMessage());
+                response.setDetails(((BaseException) e).getDetails());
             }else {
                 throw new Exception(e);
             }

@@ -17,4 +17,12 @@ public interface IExceptionMessage {
      */
     public String  getErrMessage();
 
+    /**
+     * 获取其他详细信息
+     * @return 异常提示的详细信息
+     */
+    public Object getDetails();
+
+
+
 }
