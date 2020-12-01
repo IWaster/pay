@@ -21,7 +21,7 @@ public class PayCoreService {
     public PaymentResponse execPay(PaymentRequest request){
         PaymentResponse paymentResponse = new PaymentResponse();
         try {
-            paymentResponse = BasePayment.paymentMap.get(request.getPayChannel()).process(request);
+            paymentResponse = BasePayment.getPayment(request.getPayChannel()).process(request);
         } catch (Exception e) {
             e.printStackTrace();
             ExceptionProcessorUtils.wrapperHandlerException(paymentResponse,e);
@@ -39,7 +39,7 @@ public class PayCoreService {
     public PaymentNotifyResponse paymentResultNotify(PaymentNotifyRequest request){
         PaymentNotifyResponse response=new PaymentNotifyResponse();
         try {
-            response=BasePayment.paymentMap.get
+            response=BasePayment.getPayment
                     (request.getPayChannel()).completePayment(request);
         } catch (Exception e) {
             e.printStackTrace();

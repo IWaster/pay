@@ -14,20 +14,28 @@ import java.util.concurrent.ConcurrentHashMap;
  * BasePayment
  */
 public abstract class BasePayment implements IPayment {
-    public static Map<String, BasePayment> paymentMap = new ConcurrentHashMap<String, BasePayment>();
+    private static Map<String, BasePayment> paymentMap = new ConcurrentHashMap<String, BasePayment>();
+
+    public static  BasePayment getPayment(String payChannel){
+        return paymentMap.get(payChannel);
+    }
 
     @PostConstruct
     public void init() {
         paymentMap.put(getPayChannel(), this);
     }
 
+    /**
+     * 获取取到
+     * @return 渠道
+     */
     public abstract String getPayChannel();
 
 
     /**
      * 获取验证器
      *
-     * @return
+     * @return 验证器
      */
     public abstract Validator getValidator();
 
@@ -35,8 +43,8 @@ public abstract class BasePayment implements IPayment {
     /**
      * 创建上下文信息
      *
-     * @param request
-     * @return
+     * @param request 请求体
+     * @return 上下文
      */
     public abstract Context createContext(AbstractRequest request);
 
@@ -44,8 +52,8 @@ public abstract class BasePayment implements IPayment {
     /**
      * 为下层的支付渠道的数据做好准备
      *
-     * @param request
-     * @param context
+     * @param request 请求体
+     * @param context 上下文
      */
     public  void prepare(AbstractRequest request, Context context){
         SortedMap<String, Object> sParaTemp = new TreeMap<String, Object>();
@@ -57,9 +65,9 @@ public abstract class BasePayment implements IPayment {
     /**
      * 基本业务处理
      *
-     * @param request
-     * @param context
-     * @return AbstractResponse
+     * @param request 请求体
+     * @param context 上下文
+     * @return AbstractResponse 基本业务响应体
      */
     public abstract AbstractResponse generalProcess(AbstractRequest request, Context context) ;
 
